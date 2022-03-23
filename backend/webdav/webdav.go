@@ -852,6 +852,7 @@ func (f *Fs) _mkdir(ctx context.Context, dirPath string) error {
 		Method:     "MKCOL",
 		Path:       dirPath,
 		NoResponse: true,
+		TransferEncoding: []string{"identity"},
 	}
 	err := f.pacer.Call(func() (bool, error) {
 		resp, err := f.srv.Call(ctx, &opts)
