@@ -153,6 +153,7 @@ func NewServer(listeners, tlsListeners []net.Listener, opt Options) (Server, err
 		}
 		tlsConfig = &tls.Config{
 			MinVersion:   tls.VersionTLS10, // disable SSL v3.0 and earlier
+            Renegotiation: tls.RenegotiateOnceAsClient, 
 			Certificates: []tls.Certificate{cert},
 		}
 	} else if len(listeners) == 0 && len(tlsListeners) != 0 {

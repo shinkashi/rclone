@@ -56,6 +56,7 @@ func NewTransportCustom(ctx context.Context, customize func(*http.Transport)) ht
 
 	// TLS Config
 	t.TLSClientConfig = &tls.Config{
+		Renegotiation:      tls.RenegotiateOnceAsClient,
 		InsecureSkipVerify: ci.InsecureSkipVerify,
 	}
 
